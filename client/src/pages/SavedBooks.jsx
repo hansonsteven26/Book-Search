@@ -10,7 +10,7 @@ import { removeBookId } from "../utils/localStorage";
 
 const SavedBooks = () => {
   const { loading, data } = useQuery(ME);
-  const [deleteBook] = useMutation(REMOVE_BOOK);
+  const [removeBook] = useMutation(REMOVE_BOOK);
   const [userData, setUserData] = useState({ savedBooks: [] });
 
   useEffect(() => {
@@ -30,11 +30,11 @@ const SavedBooks = () => {
     }
 
     try {
-      const { data } = await deleteBook({
+      const { data } = await removeBook({
         variables: { bookId },
       });
       // eslint-disable-next-line no-unused-vars
-      const updatedUser = data.deleteBook;
+      const updatedUser = data.removeBook;
       setUserData((prevUserData) => {
         const updatedSavedBooks = prevUserData.savedBooks.filter(
           (book) => book.bookId !== bookId
