@@ -3,14 +3,14 @@ import { Container, Card, Button, Row, Col } from "react-bootstrap";
 
 import { useQuery, useMutation } from "@apollo/client";
 import { ME } from "../utils/queries";
-import { DELETE_BOOK } from "../utils/mutations";
+import { REMOVE_BOOK } from "../utils/mutations";
 
 import Auth from "../utils/auth";
 import { removeBookId } from "../utils/localStorage";
 
 const SavedBooks = () => {
   const { loading, data } = useQuery(ME);
-  const [deleteBook] = useMutation(DELETE_BOOK);
+  const [deleteBook] = useMutation(REMOVE_BOOK);
   const [userData, setUserData] = useState({ savedBooks: [] });
 
   useEffect(() => {
